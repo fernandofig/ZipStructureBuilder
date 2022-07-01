@@ -1,6 +1,6 @@
 # ZipStructureBuilder
 
-This is an utility library to help you build a ZIP archive structure around a single pre-compressed file/data block, using only known parameters that you should having already  compressed said file. It's basically a heavily stripped-down derivation of Jaime Olivares' excellent [ZipStorer library](https://github.com/jaime-olivares/zipstorer), so most credits go to him.
+This is an utility library to help you build a ZIP archive structure around a single pre-compressed file/data block, using only known parameters that you should have already, having compressed said file. It's basically a heavily stripped-down derivation of Jaime Olivares' excellent [ZipStorer library](https://github.com/jaime-olivares/zipstorer), so most credits go to him.
 
 ## What is it?
 

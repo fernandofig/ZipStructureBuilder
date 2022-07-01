@@ -48,10 +48,12 @@ zipFile.AddRange(zipStructure.EOCDRecord);
 File.WriteAllBytes("test.zip", zipFile.ToArray());
 ````
 
+One gotcha that's not really related to my library: If you're going to use `DeflateStream` to build your compressed data, make sure the DeflateStream instance is `Dispose`ed before commiting its contents to wherever and feeding its length to the ZipStructureBuilder constructor, because the compressed data stream is only 'finished' when the stream is closed.
+
 ## Limitations
 
 There are a lot of them. Other than the file having to be zipped, the requirements on my project were pretty lax, so I took a lot of shortcuts and hard-coded a lot of stuff (that on ZipStorer was configurable) in order to keep the library usage simple and straightforward. I may revisit that in the future if there's demand:
 
  - Probably the biggest limitation currently: there's support for just a **single file** inside the ZIP;
- - There's no support for ZIP64: the specifications on my project didn't expect files larger then 4GiB or remotely close to it. ZIP64 on ZipStorer seemed slightly buggy anyway, and since I was pressed for time and wanted to keep the code simple, I just removed whatever ZIP64 support there was on ZipStorer;
+ - There's no support for ZIP64: the specifications on my project didn't expect files larger than 4GiB or remotely close to it. ZIP64 on ZipStorer seemed slightly buggy anyway, and since I was pressed for time and wanted to keep the code simple, I just removed whatever ZIP64 support there was on ZipStorer;
  - There's no support for setting advanced properties/attributes on the files inside the zip, like filename encoding (hardcoded to UTF-8) or file timestamps (hardcoded to current date/time).

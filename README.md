@@ -48,7 +48,7 @@ zipFile.AddRange(zipStructure.EOCDRecord);
 File.WriteAllBytes("test.zip", zipFile.ToArray());
 ````
 
-One gotcha that's not really related to my library: If you're going to use `DeflateStream` to build your compressed data, make sure the DeflateStream instance is `Dispose`ed before commiting its contents to wherever and feeding its length to the ZipStructureBuilder constructor, because the compressed data stream is only 'finished' when the stream is closed.
+One gotcha that's not really related to my library: If you're going to use `DeflateStream` to build your compressed data, make sure the DeflateStream instance is `Dispose`ed before commiting the backing stream contents to wherever and feeding its length to the ZipStructureBuilder constructor, because the compressed data stream is only 'finished' when the DeflateStream is closed/disposed.
 
 ## Limitations
 
